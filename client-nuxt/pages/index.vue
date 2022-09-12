@@ -12,7 +12,7 @@
                         <img
                             className="rounded-lg shadow-lg w-32 md:w-56"
                             width="200"
-                            src="http://placeimg.com/640/480"
+                            src="https://picsum.photos/id/237/200/300"
                             alt=""
                         />
                     </div>
@@ -22,7 +22,7 @@
                         <img
                             className="rounded-lg shadow-lg w-32 md:w-56"
                             width="200"
-                            src="http://placeimg.com/640/480"
+                            src="https://picsum.photos/id/237/200/300"
                             alt=""
                         />
                     </div>
