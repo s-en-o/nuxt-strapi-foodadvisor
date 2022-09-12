@@ -24,7 +24,7 @@ export default {
     css: ['@/assets/css/main.css'],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-    plugins: ['@/plugins/repo.server.ts'],
+    plugins: ['@/plugins/repo.server.js'],
 
     // Auto import components: https://go.nuxtjs.dev/config-components
     components: { path: '~/components', extensions: ['vue'] },
@@ -38,7 +38,7 @@ export default {
     ],
 
     // Modules: https://go.nuxtjs.dev/config-modules
-    modules: ['@nuxtjs/tailwindcss'],
+    modules: ['@nuxtjs/strapi', '@nuxtjs/tailwindcss'],
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {
@@ -53,4 +53,7 @@ export default {
         port: 3001,
     },
     // tailwindcss: { configPath: '@/tailwind.config.ts', exposeConfig: true },
+    strapi: {
+        url: process.env.STRAPI_URL || 'http://localhost:1337',
+    },
 };
