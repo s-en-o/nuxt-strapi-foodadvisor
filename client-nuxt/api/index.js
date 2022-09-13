@@ -6,7 +6,8 @@ export default async function ($graphql) {
         const contentHomeFetch = await $graphql.default.request(homePageQuery);
         const payload = delve(contentHomeFetch, 'page.data.attributes.blocks');
 
-        console.log('test from api index: ', payload);
+        // console.log('test from api index: ', payload);
+        return payload;
     } catch (error) {
         console.log('ERORRRRR!!!! ', error.response.errors[0].message);
     }

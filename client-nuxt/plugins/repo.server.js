@@ -1,11 +1,11 @@
 // import { Plugin } from '@nuxt/types';
 import createRepo from '../api/index';
 
-export default async ({ error, $graphql }) => {
+export default async ({ store, error, $graphql }) => {
     try {
         const payload = await createRepo($graphql);
 
-        await payload;
+        await store.dispatch('getContent', payload);
     } catch (e) {
         console.error('error: ', error);
         console.error('error: ', e);

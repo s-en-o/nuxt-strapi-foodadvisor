@@ -2,6 +2,7 @@
     <section
         className="text-gray-600 body-font py-40 flex justify-center items-center 2xl:h-screen"
     >
+        <pre>{{ $store.state.homePage }}</pre>
         <div className="container flex md:flex-row flex-col items-center">
             <div className="mt-4 relative relative-20 lg:mt-0 lg:col-start-1">
                 <!-- <ImageCards images={images} /> -->
