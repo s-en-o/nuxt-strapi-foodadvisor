@@ -24,7 +24,7 @@ export default {
     css: ['@/assets/css/main.css'],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-    plugins: ['@/plugins/repo.server.js'],
+    plugins: ['@/plugins/repo.server.js', '@/plugins/strapi.js'],
 
     // Auto import components: https://go.nuxtjs.dev/config-components
     components: { path: '~/components', extensions: ['vue'] },
@@ -35,6 +35,7 @@ export default {
         '@nuxt/typescript-build',
         '@nuxtjs/composition-api/module',
         '@nuxt/postcss8',
+        'nuxt-graphql-request',
     ],
 
     // Modules: https://go.nuxtjs.dev/config-modules
@@ -53,7 +54,33 @@ export default {
         port: 3001,
     },
     // tailwindcss: { configPath: '@/tailwind.config.ts', exposeConfig: true },
+    // STRAPI
     strapi: {
         url: process.env.STRAPI_URL || 'http://localhost:1337',
+    },
+    // GRAPHQL
+    graphql: {
+        /**
+         * An Object of your GraphQL clients
+         */
+        clients: {
+            default: {
+                /**
+                 * The client endpoint url
+                 */
+                endpoint: 'http://localhost:1337/graphql',
+                /**
+                 * Per-client options overrides
+                 * See: https://github.com/prisma-labs/graphql-request#passing-more-options-to-fetch
+                 */
+                options: {},
+            },
+        },
+
+        /**
+         * Optional
+         * default: true (this includes cross-fetch/polyfill before creating the graphql client)
+         */
+        useFetchPolyfill: true,
     },
 };
