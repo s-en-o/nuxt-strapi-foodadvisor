@@ -27,7 +27,14 @@ export default {
     plugins: ['@/plugins/repo.server.js', '@/plugins/strapi.js'],
 
     // Auto import components: https://go.nuxtjs.dev/config-components
-    components: { path: '~/components', extensions: ['vue'] },
+    components: [
+        '~/components',
+        {
+            path: '~/components/Blocks/',
+            prefix: 'ComponentBlocks',
+            extensions: ['vue'],
+        },
+    ],
 
     // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
     buildModules: [

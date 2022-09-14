@@ -2,12 +2,13 @@
     <section
         className="text-gray-600 body-font py-40 flex justify-center items-center 2xl:h-screen"
     >
+        <ComponentBlocksHero />
         <pre>{{ $store.state.homePage }}</pre>
         <div className="container flex md:flex-row flex-col items-center">
             <div className="mt-4 relative relative-20 lg:mt-0 lg:col-start-1">
                 <!-- <ImageCards images={images} /> -->
                 <div className="relative space-y-4">
-                    <div
+                    <!-- <div
                         className="flex items-end justify-center lg:justify-start space-x-4"
                     >
                         <img
@@ -26,7 +27,7 @@
                             src="https://picsum.photos/id/237/200/300"
                             alt=""
                         />
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
