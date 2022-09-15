@@ -2,13 +2,14 @@
     <section
         className="text-gray-600 body-font py-40 flex justify-center items-center 2xl:h-screen"
     >
-        <ComponentBlocksHero />
-        <pre>{{ $store.state.homePage }}</pre>
-        <div className="container flex md:flex-row flex-col items-center">
+        <!-- <div v-for="content in contents" :key="content.__typename">
+            <component :is="content.__typename"></component>
+        </div> -->
+
+        <!-- <div className="container flex md:flex-row flex-col items-center">
             <div className="mt-4 relative relative-20 lg:mt-0 lg:col-start-1">
-                <!-- <ImageCards images={images} /> -->
                 <div className="relative space-y-4">
-                    <!-- <div
+                    <div
                         className="flex items-end justify-center lg:justify-start space-x-4"
                     >
                         <img
@@ -27,7 +28,7 @@
                             src="https://picsum.photos/id/237/200/300"
                             alt=""
                         />
-                    </div> -->
+                    </div>
                 </div>
             </div>
 
@@ -38,14 +39,47 @@
                     className="block space-y-3 md:flex md:space-y-0 space-x-2"
                 ></div>
             </div>
-        </div>
+        </div> -->
     </section>
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api';
+import { defineComponent, useStore } from '@nuxtjs/composition-api';
+// INTERFACE
+type State = {
+    homePage: [];
+};
+
+type Item = {
+    __typename: string;
+    text?: string;
+};
 
 export default defineComponent({
     name: 'PageIndex',
+    setup() {
+        const store = useStore<State>();
+        const contents = store.state.homePage;
+        let status: boolean;
+
+        contents.forEach(async (item: Item) => {
+            const compName = item.__typename;
+            status = await import(`@/components/blocks/${compName}`)
+                .then((_res) => {
+                    // console.log('result', _res)
+                    return true;
+                })
+                .catch((_error) => {
+                    // console.log('error', _error)
+                    return false;
+                });
+
+            console.log('item.__typename: ', status);
+        });
+
+        return {
+            contents,
+        };
+    },
 });
 </script>
