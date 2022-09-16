@@ -30,8 +30,7 @@ export default {
     components: [
         '~/components',
         {
-            path: '~/components/blocks/',
-            prefix: 'ComponentBlocks',
+            path: '~/components/strapi/',
             extensions: ['vue'],
         },
     ],

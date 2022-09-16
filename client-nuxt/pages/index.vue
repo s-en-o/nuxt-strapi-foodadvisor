@@ -64,7 +64,7 @@ export default defineComponent({
 
         contents.forEach(async (item: Item) => {
             const compName = item.__typename;
-            status = await import(`@/components/blocks/${compName}`)
+            status = await import(`@/components/strapi/${compName}`)
                 .then((_res) => {
                     // console.log('result', _res)
                     return true;
@@ -74,7 +74,7 @@ export default defineComponent({
                     return false;
                 });
 
-            console.log('item.__typename: ', status);
+            console.log('item.__typename: ', item.__typename, status);
         });
 
         return {
