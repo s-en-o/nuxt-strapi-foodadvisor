@@ -1,7 +1,10 @@
 <template>
     <div>
         <div v-for="content in contents" :key="content.__typename">
-            <component :is="content.__typename"></component>
+            <component
+                :is="content.__typename"
+                v-bind="{ data: contentHero }"
+            ></component>
         </div>
     </div>
 </template>
@@ -66,9 +69,13 @@ export default defineComponent({
     setup() {
         const store = useStore<CMSState>();
         const contents = store.state.cms.homePage;
+        const contentHero: CMSData | undefined = contents.find(
+            (item) => item.__typename === 'ComponentBlocksHero'
+        );
 
         return {
             contents,
+            contentHero,
         };
     },
 });

@@ -60,51 +60,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, useStore } from '@nuxtjs/composition-api';
-// TYPES
-type CMSData = {
-    __typename: string;
-    text?: string;
-    header?: {
-        title?: string;
-    };
-    buttons: [
-        {
-            id: number;
-            theme: string;
-            link: {
-                href: string;
-                label: string;
-                target: string;
-            };
-        }
-    ];
-    images: {
-        data: [
-            {
-                attributes: {
-                    url: string;
-                    alternativeText: string;
-                };
-            }
-        ];
-    };
-};
-
-type CMSState = {
-    cms: {
-        homePage: Array<CMSData>;
-    };
-};
+import { defineComponent } from '@nuxtjs/composition-api';
 
 export default defineComponent({
     name: 'ComponentBlocksHero',
-    setup() {
-        const store = useStore<CMSState>();
-        const contents = store.state.cms.homePage;
-        const content: CMSData | undefined = contents.find(
-            (item) => item.__typename === 'ComponentBlocksHero'
-        );
+    props: {
+        data: {
+            type: Object,
+            required: true,
+            default: () => {},
+        },
+    },
+    setup(props) {
+        const content = props.data;
 
         return { content };
     },
