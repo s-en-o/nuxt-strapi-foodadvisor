@@ -14,10 +14,7 @@
                             className="rounded-lg shadow-lg w-32 md:w-56"
                             width="200"
                             :src="$config.baseURL + image.attributes.url"
-                            :alt="
-                                $config.baseURL +
-                                image.attributes.alternativeText
-                            "
+                            :alt="image.attributes.alternativeText"
                         />
                     </div>
                     <div
@@ -27,10 +24,7 @@
                             v-for="image in content.images.data.slice(2, 4)"
                             :key="image.id"
                             :src="$config.baseURL + image.attributes.url"
-                            :alt="
-                                $config.baseURL +
-                                image.attributes.alternativeText
-                            "
+                            :alt="image.attributes.alternativeText"
                             className="rounded-lg shadow-lg w-32 md:w-56"
                             width="200"
                         />
