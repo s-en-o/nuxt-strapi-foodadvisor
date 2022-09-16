@@ -11,9 +11,11 @@
 
 <script lang="ts">
 import { defineComponent, useStore } from '@nuxtjs/composition-api';
+import { useStrapiCompFetch } from '@/use/strapi';
+
 // TYPES
 type CMSData = {
-    __typename: string;
+    __typename?: string;
     text?: string;
     header?: {
         title?: string;
@@ -68,10 +70,9 @@ export default defineComponent({
     name: 'PageIndex',
     setup() {
         const store = useStore<CMSState>();
-        const contents = store.state.cms.homePage;
-        const contentHero: CMSData | undefined = contents.find(
-            (item) => item.__typename === 'ComponentBlocksHero'
-        );
+        const contents: Array<CMSData> = store.state.cms.homePage;
+        const { content } = useStrapiCompFetch(contents, 'ComponentBlocksHero');
+        const contentHero: CMSData | undefined = content as CMSData;
 
         return {
             contents,

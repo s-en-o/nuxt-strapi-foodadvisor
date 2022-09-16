@@ -45,13 +45,13 @@
 
                 <div className="block space-y-3 md:flex md:space-y-0 space-x-2">
                     <button v-for="button in content.buttons" :key="button.id">
-                        <a
-                            :href="button.link.href"
+                        <NuxtLink
+                            :to="button.link.href"
                             :target="button.link.target"
                             :class="`inline-block text-${button.theme}-text bg-${button.theme} border-0 py-2 px-6 focus:outline-none hover:bg-${button.theme}-darker rounded-full shadow-md hover:shadow-md text-lg`"
                         >
                             {{ button.link.label }}
-                        </a>
+                        </NuxtLink>
                     </button>
                 </div>
             </div>
