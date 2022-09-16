@@ -8,6 +8,8 @@ export default async function ($graphql) {
 
         return payload;
     } catch (error) {
-        console.log('ERORRRRR!!!! ', error.response.errors[0].message);
+        console.error(
+            `Error while fetching data: ${error.response.errors[0].message}`
+        );
     }
 }
