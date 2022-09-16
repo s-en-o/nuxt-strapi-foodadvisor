@@ -59,6 +59,9 @@ export default {
     server: {
         port: 3001,
     },
+    publicRuntimeConfig: {
+        baseURL: process.env.BASE_URL || 'https://nuxtjs.org',
+    },
     // tailwindcss: { configPath: '@/tailwind.config.ts', exposeConfig: true },
     // STRAPI
     strapi: {
