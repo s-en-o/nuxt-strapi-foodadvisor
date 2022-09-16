@@ -13,6 +13,8 @@ query homePage {
                         }
 
                         buttons {
+                            id
+                            theme
                             link {
                                 href
                                 label
@@ -21,8 +23,10 @@ query homePage {
 
                         images {
                             data {
+                                id
                                 attributes {
                                     url
+                                    alternativeText
                                 }
                             }
                         }

@@ -1,44 +1,118 @@
 <template>
-    <div className="container flex md:flex-row flex-col items-center">
-        <div className="mt-4 relative relative-20 lg:mt-0 lg:col-start-1">
-            <div className="relative space-y-4">
-                <div
-                    className="flex items-end justify-center lg:justify-start space-x-4"
-                >
-                    <img
-                        className="rounded-lg shadow-lg w-32 md:w-56"
-                        width="200"
-                        src="https://picsum.photos/id/237/200/300"
-                        alt=""
-                    />
+    <section
+        className="text-gray-600 body-font py-40 flex justify-center items-center 2xl:h-screen"
+    >
+        <div className="container flex md:flex-row flex-col items-center">
+            <div className="mt-4 relative relative-20 lg:mt-0 lg:col-start-1">
+                <div className="relative space-y-4">
+                    <div
+                        className="flex items-end justify-center lg:justify-start space-x-4"
+                    >
+                        <img
+                            v-for="image in content.images.data.slice(0, 2)"
+                            :key="image.id"
+                            className="rounded-lg shadow-lg w-32 md:w-56"
+                            width="200"
+                            :src="$config.baseURL + image.attributes.url"
+                            :alt="
+                                $config.baseURL +
+                                image.attributes.alternativeText
+                            "
+                        />
+                    </div>
+                    <div
+                        className="flex items-start justify-center lg:justify-start space-x-4 md:ml-12"
+                    >
+                        <img
+                            v-for="image in content.images.data.slice(2, 4)"
+                            :key="image.id"
+                            :src="$config.baseURL + image.attributes.url"
+                            :alt="
+                                $config.baseURL +
+                                image.attributes.alternativeText
+                            "
+                            className="rounded-lg shadow-lg w-32 md:w-56"
+                            width="200"
+                        />
+                    </div>
                 </div>
-                <div
-                    className="flex items-start justify-center lg:justify-start space-x-4 md:ml-12"
+            </div>
+
+            <div
+                className="lg:flex-grow md:w-1/2 my-12 lg:pl-24 md:pl-16 md:mx-auto flex flex-col md:items-start md:text-left items-center text-center"
+            >
+                <h1
+                    className="title-font lg:text-6xl text-5xl mb-4 font-black text-gray-900"
                 >
-                    <img
-                        className="rounded-lg shadow-lg w-32 md:w-56"
-                        width="200"
-                        src="https://picsum.photos/id/237/200/300"
-                        alt=""
-                    />
+                    {{ content.header.title }}
+                </h1>
+
+                <p className="mb-8 px-2 leading-relaxed">{{ content.text }}</p>
+
+                <div className="block space-y-3 md:flex md:space-y-0 space-x-2">
+                    <button v-for="button in content.buttons" :key="button.id">
+                        <a
+                            :href="button.link.href"
+                            :target="button.link.target"
+                            :class="`inline-block text-${button.theme}-text bg-${button.theme} border-0 py-2 px-6 focus:outline-none hover:bg-${button.theme}-darker rounded-full shadow-md hover:shadow-md text-lg`"
+                        >
+                            {{ button.link.label }}
+                        </a>
+                    </button>
                 </div>
             </div>
         </div>
-
-        <div
-            className="lg:flex-grow md:w-1/2 my-12 lg:pl-24 md:pl-16 md:mx-auto flex flex-col md:items-start md:text-left items-center text-center"
-        >
-            <div
-                className="block space-y-3 md:flex md:space-y-0 space-x-2"
-            ></div>
-        </div>
-    </div>
+    </section>
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api';
+import { defineComponent, useStore } from '@nuxtjs/composition-api';
+// TYPES
+type CMSData = {
+    __typename: string;
+    text?: string;
+    header?: {
+        title?: string;
+    };
+    buttons: [
+        {
+            id: number;
+            theme: string;
+            link: {
+                href: string;
+                label: string;
+                target: string;
+            };
+        }
+    ];
+    images: {
+        data: [
+            {
+                attributes: {
+                    url: string;
+                    alternativeText: string;
+                };
+            }
+        ];
+    };
+};
+
+type CMSState = {
+    cms: {
+        homePage: Array<CMSData>;
+    };
+};
 
 export default defineComponent({
     name: 'ComponentBlocksHero',
+    setup() {
+        const store = useStore<CMSState>();
+        const contents = store.state.cms.homePage;
+        const content: CMSData | undefined = contents.find(
+            (item) => item.__typename === 'ComponentBlocksHero'
+        );
+
+        return { content };
+    },
 });
 </script>

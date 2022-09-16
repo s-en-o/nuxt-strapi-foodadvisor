@@ -1,16 +1,14 @@
 <template>
-    <section
-        className="text-gray-600 body-font py-40 flex justify-center items-center 2xl:h-screen"
-    >
+    <div>
         <div v-for="content in contents" :key="content.__typename">
             <component :is="content.__typename"></component>
         </div>
-    </section>
+    </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, useStore } from '@nuxtjs/composition-api';
-// INTERFACE
+// TYPES
 type CMSData = {
     __typename: string;
     text?: string;
