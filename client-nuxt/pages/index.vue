@@ -46,11 +46,13 @@
 <script lang="ts">
 import { defineComponent, useStore } from '@nuxtjs/composition-api';
 // INTERFACE
-type State = {
-    homePage: [];
+type CMSState = {
+    cms: {
+        homePage: [];
+    };
 };
 
-type Item = {
+type CMSData = {
     __typename: string;
     text?: string;
 };
@@ -58,11 +60,11 @@ type Item = {
 export default defineComponent({
     name: 'PageIndex',
     setup() {
-        const store = useStore<State>();
-        const contents = store.state.homePage;
+        const store = useStore<CMSState>();
+        const contents = store.state.cms.homePage;
         let status: boolean;
 
-        contents.forEach(async (item: Item) => {
+        contents.forEach(async (item: CMSData) => {
             const compName = item.__typename;
             status = await import(`@/components/strapi/${compName}`)
                 .then((_res) => {

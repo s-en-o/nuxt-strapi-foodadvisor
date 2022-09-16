@@ -1,19 +1,7 @@
-export const state = () => ({
-    homePage: [],
-});
+export const state = () => ({});
 
 export const getters = {};
 
-export const mutations = {
-    insertContent: (state, payload) => {
-        state.homePage = payload;
-    },
-};
+export const mutations = {};
 
-export const actions = {
-    getContent({ commit, state }, payload) {
-        // Don't fetch data when data is available
-        if (state.homePage.length) return;
-        commit('insertContent', payload);
-    },
-};
+export const actions = {};
