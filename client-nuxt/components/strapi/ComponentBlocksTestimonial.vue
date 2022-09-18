@@ -17,6 +17,7 @@
                                 .attributes.alternativeText
                         "
                         :src="
+                            $config.baseURL +
                             content.author.data.attributes.picture.data
                                 .attributes.url
                         "

@@ -78,7 +78,7 @@ query homePage {
 
                     ... on ComponentBlocksFeaturesWithImages {
                         __typename
-
+                        thm: theme
                         para: text
 
                         header {
@@ -90,6 +90,7 @@ query homePage {
                             data {
                                 attributes {
                                     url
+                                    alternativeText
                                 }
                             }
                         }
