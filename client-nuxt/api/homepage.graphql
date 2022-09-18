@@ -55,13 +55,22 @@ query homePage {
 
                     ... on ComponentBlocksTestimonial {
                         __typename
-
-                        testi: text
+                        theme
+                        testimony: text
 
                         author {
                             data {
                                 attributes {
                                     username
+                                    job
+                                    picture {
+                                        data {
+                                            attributes {
+                                                url
+                                                alternativeText
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
