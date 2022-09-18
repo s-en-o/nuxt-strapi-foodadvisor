@@ -1,0 +1,44 @@
+query Global {
+    global {
+        data {
+            attributes {
+                # Navigation
+                navigation {
+                    links {
+                        href
+                        label
+                        target
+                    }
+                    # Left button
+                    leftButton {
+                        label
+                        href
+                        target
+                    }
+                    # Right button
+                    rightButton {
+                        label
+                        href
+                        target
+                    }
+                }
+                # Footer
+                footer {
+                    label
+
+                    footerColumns {
+                        links {
+                            href
+                            label
+                            target
+                        }
+                    }
+
+                    socialNetworks {
+                        url
+                    }
+                }
+            }
+        }
+    }
+}
