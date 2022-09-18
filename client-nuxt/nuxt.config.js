@@ -30,7 +30,7 @@ export default {
     components: [
         '~/components',
         {
-            path: '~/components/strapi/',
+            path: '~/components/Strapi/',
             extensions: ['vue'],
         },
     ],
