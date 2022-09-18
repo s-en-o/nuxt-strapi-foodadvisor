@@ -239,6 +239,7 @@ coverage
 ############################
 
 .env
+.env.development
 license.txt
 exports
 *.cache

@@ -21,7 +21,7 @@ export default {
     },
 
     // Global CSS: https://go.nuxtjs.dev/config-css
-    css: ['@/assets/css/main.css'],
+    css: ['@/assets/css/tailwind.css'],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: ['@/plugins/repo.server.js', '@/plugins/strapi.js'],
@@ -60,12 +60,11 @@ export default {
         port: 3001,
     },
     publicRuntimeConfig: {
-        baseURL: process.env.BASE_URL || 'https://nuxtjs.org',
+        baseURL: process.env.URL_BASE,
     },
-    // tailwindcss: { configPath: '@/tailwind.config.ts', exposeConfig: true },
     // STRAPI
     strapi: {
-        url: process.env.STRAPI_URL || 'http://localhost:1337',
+        url: process.env.URL_API,
     },
     // GRAPHQL
     graphql: {
@@ -77,7 +76,7 @@ export default {
                 /**
                  * The client endpoint url
                  */
-                endpoint: 'http://localhost:1337/graphql',
+                endpoint: process.env.URL_API,
                 /**
                  * Per-client options overrides
                  * See: https://github.com/prisma-labs/graphql-request#passing-more-options-to-fetch

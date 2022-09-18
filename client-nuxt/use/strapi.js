@@ -10,13 +10,10 @@ export function useStrapiCompFetch(contents, compName) {
 
     // a composable can also hook into its owner component's
     // lifecycle to setup and teardown side effects.
-    onMounted(() => {
-        console.log(`Mounted: ${content.value}`);
-    });
+    onMounted(() => {});
 
     onUnmounted(() => {
         content.value = '';
-        console.log(`unMounted: ${content.value}`);
     });
 
     // expose managed state as return value
