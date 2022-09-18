@@ -3,7 +3,7 @@
         <div v-for="content in contents" :key="content.__typename">
             <component
                 :is="content.__typename"
-                v-bind="{ data: contentHero }"
+                v-bind="{ data: content }"
             ></component>
         </div>
     </div>
@@ -11,7 +11,6 @@
 
 <script lang="ts">
 import { defineComponent, useStore } from '@nuxtjs/composition-api';
-import { useStrapiCompFetch } from '@/use/strapi';
 
 // TYPES
 type CMSData = {
@@ -71,12 +70,9 @@ export default defineComponent({
     setup() {
         const store = useStore<CMSState>();
         const contents: Array<CMSData> = store.state.cms.homePage;
-        const { content } = useStrapiCompFetch(contents, 'ComponentBlocksHero');
-        const contentHero: CMSData | undefined = content as CMSData;
 
         return {
             contents,
-            contentHero,
         };
     },
 });
