@@ -61,8 +61,6 @@ query homePage {
                         author {
                             data {
                                 attributes {
-                                    username
-                                    job
                                     picture {
                                         data {
                                             attributes {
@@ -71,6 +69,8 @@ query homePage {
                                             }
                                         }
                                     }
+                                    username
+                                    job
                                 }
                             }
                         }
@@ -102,7 +102,7 @@ query homePage {
 
                     ... on ComponentBlocksFaq {
                         __typename
-
+                        faqTheme: theme
                         title
 
                         faq {
