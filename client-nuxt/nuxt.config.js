@@ -45,7 +45,7 @@ export default {
     ],
 
     // Modules: https://go.nuxtjs.dev/config-modules
-    modules: ['@nuxtjs/strapi', '@nuxtjs/tailwindcss'],
+    modules: ['@nuxtjs/strapi', '@nuxtjs/tailwindcss', '@nuxtjs/markdownit'],
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {
@@ -90,5 +90,15 @@ export default {
          * default: true (this includes cross-fetch/polyfill before creating the graphql client)
          */
         useFetchPolyfill: true,
+    },
+    // [optional] markdownit options
+    // See https://github.com/markdown-it/markdown-it
+    markdownit: {
+        runtime: true, // Support `$md()`
+        // preset: 'default',
+        // linkify: true,
+        // breaks: true,
+        // injected: true,
+        // use: ['markdown-it-div', 'markdown-it-attrs'],
     },
 };

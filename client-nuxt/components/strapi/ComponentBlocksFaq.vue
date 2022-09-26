@@ -8,8 +8,6 @@
             </h2>
 
             <dl class="w-full md:w-2/3 mt-12 md:mt-0">
-                <!-- {items &&
-                    items.map((item, index) => ( -->
                 <div v-for="(faq, index) in content.faq" :key="index">
                     <dt :class="`mb-4 text-${content.faqTheme}-text`">
                         <h3 class="text-xl font-semibold">
@@ -19,14 +17,9 @@
                     <dd
                         :class="`markdown-body mb-16 text-${content.faqTheme}-text`"
                     >
-                        {{ faq.answer }}
-                        <!-- <ReactMarkdown
-                        children={delve(item, 'answer')}
-                        linkTarget="_blank"
-                        ></ReactMarkdown> -->
+                        <div v-html="$md.render(faq.answer)"></div>
                     </dd>
                 </div>
-                <!-- ))} -->
             </dl>
         </div>
     </div>
