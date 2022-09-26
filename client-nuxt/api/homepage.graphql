@@ -142,6 +142,7 @@ query homePage {
                         title
                         text
                         commandLine
+                        ComponentBlocksCtaCommandLineTheme: theme
                     }
                 }
             }
