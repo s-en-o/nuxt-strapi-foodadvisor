@@ -115,6 +115,7 @@ query homePage {
                         __typename
 
                         header {
+                            theme
                             label
                             title
                         }
